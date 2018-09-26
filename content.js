@@ -1,3 +1,4 @@
+// on landing page
 var checkTopAdExists = setInterval(
     function() {
         if ( typeof document.getElementsByClassName( 'HypothesisTestingView' )[0] !== 'undefined' ) {
@@ -9,6 +10,7 @@ var checkTopAdExists = setInterval(
     100 // check every 100 ms to see if the ad exists on the page yet
 );
 
+// on landing page
 var widgetRemovalCounter = 0;
 var checkWidgetAdExists = setInterval(
     function() {
@@ -22,6 +24,18 @@ var checkWidgetAdExists = setInterval(
                     widgetRemovalCounter++;
                 }
             }
+        }
+    },
+    100 // check every 100 ms to see if the ad exists on the page yet
+);
+
+// only on transactions page
+var checkTransactionTopAdExists = setInterval(
+    function() {
+        if ( document.getElementById( 'TopTxnOfferWidgetContainer' ) !== null ) {
+            console.log( 'Transaction top ad exists! Kill it!' );
+            document.getElementById( 'TopTxnOfferWidgetContainer' ).style.display = 'none';
+            clearInterval( checkTransactionTopAdExists );
         }
     },
     100 // check every 100 ms to see if the ad exists on the page yet
